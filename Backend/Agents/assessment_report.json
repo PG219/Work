@@ -1,0 +1,219 @@
+{
+  "scores": {
+    "EU": 42.23,
+    "NIST": 42.47,
+    "ISO": 41.63
+  },
+  "overall": 42.11,
+  "per_question": {
+    "gov_policies": 1,
+    "gov_accountability": 2,
+    "leadership": 1,
+    "scope": 2,
+    "jurisdiction": 2,
+    "risk_classification": 2,
+    "risk_specific": 2,
+    "docs_traceability": 1,
+    "audit_trails": 2,
+    "human_oversight": 2,
+    "user_rights": 1,
+    "explainability": 1,
+    "technical_controls": 2,
+    "independent_validation": 0,
+    "monitoring_metrics": 2,
+    "continuous_improvement": 1,
+    "prohibited_practices": 2,
+    "legal_alignment": 1,
+    "data_governance": 1
+  },
+  "rationales": {
+    "gov_policies": "The AI Governance Policy (Document #1) outlines requirements for risk assessment, human oversight, and transparency. However, it does not mention an AI Management System (AIMS) or external certifications/audits as claimed in the answer.",
+    "gov_accountability": "Policy Document #1 states the AI Governance Officer (AIGO) is responsible for oversight. It mentions risk assessment but not a cross-functional committee or RACI matrix, indicating a defined but not fully detailed accountability structure.",
+    "leadership": "The policy mentions an AI Governance Officer (AIGO) for oversight, but lacks explicit details on top management's direct involvement in directing strategy, setting KPIs, or budget allocation for AI governance. Further clarification is needed.",
+    "scope": "The AI Governance Policy (Document #1) mandates that all AI projects undergo a formal risk assessment, implying a need to document purpose, context, scope, use-case boundaries, and impacted groups. However, it does not specify measurement or external assurance.",
+    "jurisdiction": "The policy mandates risk assessments classified per the EU AI Act (Doc #1, Sec 3), indicating awareness of EU regulations. However, it doesn't detail a dynamic compliance map or automated adaptation.",
+    "risk_classification": "Policy Document #1 mandates formal risk assessment classified per the EU AI Act. It also requires human oversight for high-risk systems. However, it does not specify mapping for all potential harms or third-party validation.",
+    "risk_specific": "The policy mandates risk assessments classified per the EU AI Act (Doc #1, Sec 3). However, it does not detail the specific risks identified, assessed, or prioritized, nor does it mention a central risk register or review committee.",
+    "docs_traceability": "Policy #1 mandates model cards and data sheets, but does not specify versioning, data provenance, model governance, decision logs, incident records, or conformity assessments.",
+    "audit_trails": "The policy mandates model cards and data sheets (Doc #1, Sec 5), implying record-keeping. The answer states audit trails are generated and retained per regulations (Answer 2), indicating a defined process.",
+    "human_oversight": "Policy Document #1 mandates HITL for high-risk systems and clear escalation paths. However, it does not specify SLAs or mention external audits for this process.",
+    "user_rights": "Policy Document #1 mentions transparency and human oversight for high-risk systems, but does not detail user notification methods or specific rights for appeal, objection, or explanation. The answer introduces concepts not present in the provided policy.",
+    "explainability": "Policy Document #1 mandates model cards and data sheets for production models, implying a level of transparency. However, it does not explicitly detail technical measures for end-user or regulatory explainability.",
+    "technical_controls": "The policy mandates risk assessments (Sec 3) and human oversight for high-risk systems (Sec 4), implying mitigation strategies. However, it does not detail specific controls like bias mitigation, fallback mechanisms, adversarial testing, or cybersecurity safeguards.",
+    "independent_validation": "The provided policy documents (Document #1) do not contain any mention of conformity assessments, external audits, or third-party certifications. Therefore, no evidence supports the claim made in the answer.",
+    "monitoring_metrics": "The policy mandates risk assessments and specifies human oversight for high-risk systems (Doc #1, Sec 3 & 4). However, it does not detail specific metrics or benchmarks for monitoring accuracy, fairness, robustness, security, or ethical compliance.",
+    "continuous_improvement": "The policy mentions risk assessment and human oversight for high-risk systems, but lacks specific procedures for continuous monitoring, incident management, learning from failures, or system updates/retirement as requested in the question. The answer mentions a process for continuous improvement and post-mortems, but this is not detailed in the provided policy documents.",
+    "prohibited_practices": "The policy mandates risk assessments classified per the EU AI Act (Doc #1, Sec 3), implying awareness of prohibited practices. However, it doesn't explicitly detail a process for verifying avoidance of specific prohibited practices.",
+    "legal_alignment": "The policy mandates risk assessment aligned with the EU AI Act (Document #1, Section 3), indicating awareness of regulatory alignment. However, it lacks detail on how this alignment is maintained across multiple jurisdictions or through automated tools.",
+    "data_governance": "Policy #1 mentions data sheets for models, implying data governance. However, it doesn't detail data governance frameworks, privacy impact assessments, or stakeholder communication processes. The answer references external certifications and processes not present in the provided policy."
+  },
+  "controls": {
+    "policy_aimgov": {
+      "desc": "Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",
+      "weights": {
+        "EU": 0.8,
+        "NIST": 0.6,
+        "ISO": 1.0
+      },
+      "evidence": true
+    },
+    "risk_register": {
+      "desc": "Central AI risk register with owners, mitigations, review cadence",
+      "weights": {
+        "EU": 0.9,
+        "NIST": 1.0,
+        "ISO": 0.9
+      },
+      "evidence": true
+    },
+    "dpia_pia": {
+      "desc": "DPIA/PIA conducted and updated for AI data processing",
+      "weights": {
+        "EU": 1.0,
+        "NIST": 0.6,
+        "ISO": 0.8
+      },
+      "evidence": true
+    },
+    "human_oversight_design": {
+      "desc": "HITL/HOTL design with documented override/escalation",
+      "weights": {
+        "EU": 1.0,
+        "NIST": 0.8,
+        "ISO": 0.8
+      },
+      "evidence": true
+    },
+    "model_docs": {
+      "desc": "Model cards/data sheets, versioning, lineage, decision logs",
+      "weights": {
+        "EU": 1.0,
+        "NIST": 0.9,
+        "ISO": 1.0
+      },
+      "evidence": true
+    },
+    "security_mlsdlc": {
+      "desc": "Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks",
+      "weights": {
+        "EU": 0.9,
+        "NIST": 1.0,
+        "ISO": 0.9
+      },
+      "evidence": true
+    },
+    "incident_response": {
+      "desc": "AI incident management (detection, triage, comms, postmortems)",
+      "weights": {
+        "EU": 0.8,
+        "NIST": 1.0,
+        "ISO": 1.0
+      },
+      "evidence": true
+    },
+    "monitoring_bias_drift": {
+      "desc": "Monitoring for bias/drift/robustness with thresholds & alerts",
+      "weights": {
+        "EU": 0.8,
+        "NIST": 1.0,
+        "ISO": 0.9
+      },
+      "evidence": true
+    },
+    "third_party_validation": {
+      "desc": "External audit or conformity assessment completed",
+      "weights": {
+        "EU": 1.0,
+        "NIST": 0.8,
+        "ISO": 1.0
+      },
+      "evidence": true
+    }
+  },
+  "recommendations": [
+    "Establish EU AI Act risk classification and technical documentation (model/data lineage, decision logs); perform DPIA if applicable.",
+    "Operationalize NIST AI RMF Govern/Map/Measure/Manage with metrics for bias, robustness, and incident response.",
+    "Stand up an AI Management System (AIMS) per ISO/IEC 42001 with leadership commitment, policies, audits, and continual improvement."
+  ],
+  "detailed_analysis": {
+    "EU": {
+      "contributing": [
+        "Addressed: 'Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?' (Maturity: 2/4)",
+        "Addressed: 'Does the AI system operate on data or affect individuals in regulated jurisdictions, especially the EU?' (Maturity: 2/4)",
+        "Addressed: 'Does the AI use-case avoid prohibited practices (e.g., unsanctioned social scoring, real-time biometric ID in public in the EU)?' (Maturity: 2/4)",
+        "Addressed: 'Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?' (Maturity: 2/4)",
+        "Addressed: 'How is human oversight and intervention designed into the AI system, particularly for high-risk applications?' (Maturity: 2/4)",
+        "Addressed: 'What is the intended purpose, context, and scope of the AI system, including use-case boundaries and impacted user groups or populations?' (Maturity: 2/4)",
+        "Addressed: 'What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?' (Maturity: 2/4)",
+        "Addressed: 'What risk mitigation strategies and controls are deployed, including bias mitigation, fallback mechanisms, adversarial testing, cybersecurity safeguards, and third-party component assessments?' (Maturity: 2/4)",
+        "Addressed: 'What specific risks have been identified, assessed, and prioritized, including bias, privacy, cybersecurity, and societal impacts?' (Maturity: 2/4)",
+        "Addressed: 'Who is accountable for AI governance, risk management, and compliance, including cross-functional roles spanning legal, technical, ethical, and operational?' (Maturity: 2/4)",
+        "Implemented Control: 'AI incident management (detection, triage, comms, postmortems)'",
+        "Implemented Control: 'Central AI risk register with owners, mitigations, review cadence'",
+        "Implemented Control: 'DPIA/PIA conducted and updated for AI data processing'",
+        "Implemented Control: 'External audit or conformity assessment completed'",
+        "Implemented Control: 'HITL/HOTL design with documented override/escalation'",
+        "Implemented Control: 'Model cards/data sheets, versioning, lineage, decision logs'",
+        "Implemented Control: 'Monitoring for bias/drift/robustness with thresholds & alerts'",
+        "Implemented Control: 'Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks'",
+        "Implemented Control: 'Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)'"
+      ],
+      "missing": [
+        "Gap: 'Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?' (Maturity: 0/4) (Ref: EU Art. 17)",
+        "Gap: 'What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?' (Maturity: 1/4) (Ref: EU Art. 11)"
+      ]
+    },
+    "NIST": {
+      "contributing": [
+        "Addressed: 'Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?' (Maturity: 2/4)",
+        "Addressed: 'Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?' (Maturity: 2/4)",
+        "Addressed: 'How is human oversight and intervention designed into the AI system, particularly for high-risk applications?' (Maturity: 2/4)",
+        "Addressed: 'What is the intended purpose, context, and scope of the AI system, including use-case boundaries and impacted user groups or populations?' (Maturity: 2/4)",
+        "Addressed: 'What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?' (Maturity: 2/4)",
+        "Addressed: 'What risk mitigation strategies and controls are deployed, including bias mitigation, fallback mechanisms, adversarial testing, cybersecurity safeguards, and third-party component assessments?' (Maturity: 2/4)",
+        "Addressed: 'What specific risks have been identified, assessed, and prioritized, including bias, privacy, cybersecurity, and societal impacts?' (Maturity: 2/4)",
+        "Addressed: 'Who is accountable for AI governance, risk management, and compliance, including cross-functional roles spanning legal, technical, ethical, and operational?' (Maturity: 2/4)",
+        "Implemented Control: 'AI incident management (detection, triage, comms, postmortems)'",
+        "Implemented Control: 'Central AI risk register with owners, mitigations, review cadence'",
+        "Implemented Control: 'DPIA/PIA conducted and updated for AI data processing'",
+        "Implemented Control: 'External audit or conformity assessment completed'",
+        "Implemented Control: 'HITL/HOTL design with documented override/escalation'",
+        "Implemented Control: 'Model cards/data sheets, versioning, lineage, decision logs'",
+        "Implemented Control: 'Monitoring for bias/drift/robustness with thresholds & alerts'",
+        "Implemented Control: 'Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks'",
+        "Implemented Control: 'Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)'"
+      ],
+      "missing": [
+        "Gap: 'Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?' (Maturity: 0/4) (Ref: NIST Gov-5)",
+        "Gap: 'What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?' (Maturity: 1/4) (Ref: NIST Gov-2)"
+      ]
+    },
+    "ISO": {
+      "contributing": [
+        "Addressed: 'Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?' (Maturity: 2/4)",
+        "Addressed: 'Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?' (Maturity: 2/4)",
+        "Addressed: 'How is human oversight and intervention designed into the AI system, particularly for high-risk applications?' (Maturity: 2/4)",
+        "Addressed: 'What is the intended purpose, context, and scope of the AI system, including use-case boundaries and impacted user groups or populations?' (Maturity: 2/4)",
+        "Addressed: 'What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?' (Maturity: 2/4)",
+        "Addressed: 'What risk mitigation strategies and controls are deployed, including bias mitigation, fallback mechanisms, adversarial testing, cybersecurity safeguards, and third-party component assessments?' (Maturity: 2/4)",
+        "Addressed: 'What specific risks have been identified, assessed, and prioritized, including bias, privacy, cybersecurity, and societal impacts?' (Maturity: 2/4)",
+        "Addressed: 'Who is accountable for AI governance, risk management, and compliance, including cross-functional roles spanning legal, technical, ethical, and operational?' (Maturity: 2/4)",
+        "Implemented Control: 'AI incident management (detection, triage, comms, postmortems)'",
+        "Implemented Control: 'Central AI risk register with owners, mitigations, review cadence'",
+        "Implemented Control: 'DPIA/PIA conducted and updated for AI data processing'",
+        "Implemented Control: 'External audit or conformity assessment completed'",
+        "Implemented Control: 'HITL/HOTL design with documented override/escalation'",
+        "Implemented Control: 'Model cards/data sheets, versioning, lineage, decision logs'",
+        "Implemented Control: 'Monitoring for bias/drift/robustness with thresholds & alerts'",
+        "Implemented Control: 'Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks'",
+        "Implemented Control: 'Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)'"
+      ],
+      "missing": [
+        "Gap: 'Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?' (Maturity: 0/4) (Ref: ISO Cl. 9.2)",
+        "Gap: 'How is top management involved in supporting, directing, and overseeing AI policies and risk controls?' (Maturity: 1/4) (Ref: ISO Cl. 5.1)",
+        "Gap: 'What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?' (Maturity: 1/4) (Ref: ISO Cl. 7.5)",
+        "Gap: 'What formal organizational policies and AI management systems are in place to ensure responsible AI development and deployment?' (Maturity: 1/4) (Ref: ISO Cl. 5.2)"
+      ]
+    }
+  }
+}

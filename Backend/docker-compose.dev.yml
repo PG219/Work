@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: governance-mongodb-dev
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-password123}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-governance_db}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_dev:/data/db
+      - ./DB_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - governance-network-dev
+
+  # Backend API (Development)
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: governance-backend-dev
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-password123}@mongodb:27017/${MONGO_DATABASE:-governance_db}?retryWrites=true&w=majority&appName=Governance-AI&authSource=admin
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+    networks:
+      - governance-network-dev
+    command: npm run dev
+
+volumes:
+  mongodb_data_dev:
+    driver: local
+
+networks:
+  governance-network-dev:
+    driver: bridge 

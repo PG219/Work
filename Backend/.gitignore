@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Python virtual environments
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environment variables and config
+.env
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Saved sessions or runtime data
+Agent-RakFort/saved_sessions/
+Agent-RakFort/*.pyc
+
+# Shell scripts output
+*.sh
+
+# Ignore all compiled Python files in agents and subfolders
+Agents/agents/**/*.pyc
+Agents/agents/**/__pycache__/
+
+# Ignore all compiled Python files in waste subfolder
+Agents/agents/waste/**/*.pyc
+Agents/agents/waste/**/__pycache__/ 
+
+service.json

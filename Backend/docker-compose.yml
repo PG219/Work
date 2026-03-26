@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: governance-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-password123}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE:-governance_db}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./DB_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - governance-network
+
+  # Redis Cache Service (NEW)
+  redis:
+    image: redis:6-alpine # Lightweight Redis image
+    container_name: governance-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data # Volume for persisting Redis data
+    networks:
+      - governance-network
+
+  # Backend API
+  backend:
+    build: .
+    container_name: governance-backend
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGODB_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-password123}@mongodb:27017/${MONGO_DATABASE:-governance_db}?retryWrites=true&w=majority&appName=Governance-AI&authSource=admin
+      # NEW: Environment variables for Redis
+      - REDIS_HOST=redis           # Uses the Redis service name as the host
+      - REDIS_PORT=6379            # Default Redis port
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongodb
+      - redis # NEW: Ensure Redis starts before the backend attempts to connect
+    networks:
+      - governance-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data: # NEW: Volume definition for Redis data persistence
+    driver: local
+
+networks:
+  governance-network:
+    driver: bridge
