@@ -3,8 +3,6 @@ from __future__ import annotations
 import os
 from pathlib import Path
 from typing import List, Optional, Dict, Any
-
-import pandas as pd
 from fastapi import FastAPI, HTTPException, Body, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
@@ -24,38 +22,15 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-# ---------- Config (from File 1) ----------
-ROOT = Path(__file__).resolve().parent
+# ---------- Data Access (from PostgreSQL) ----------
+from agents.db_io import (
+    read_ai_risks,
+    read_ai_controls,
+    read_cyber_risks,
+    read_nist_controls,
+)
 
-PREDEFINED_RISKS_XLSX    = ROOT / "predefined_risks.xlsx"
-PREDEFINED_CONTROLS_XLSX = ROOT / "predefined_controls.xlsx"
-STRIDE_RISKS_XLSX        = ROOT / "stride_risks.xlsx"
-NIST_CONTROLS_XLSX       = ROOT / "nist_controls.xlsx"
 
-SHEET_PREDEFINED_RISKS    = "Sheet"
-SHEET_PREDEFINED_CONTROLS = "Sheet1"
-SHEET_STRIDE_RISKS        = "Sheet"
-SHEET_NIST_CONTROLS       = "Sheet"
-
-# ---------- Helpers (from File 1) ----------
-def _read_xlsx(path: Path, sheet: str) -> pd.DataFrame:
-    if not path.exists():
-        raise HTTPException(500, f"Excel not found: {path}")
-    df = pd.read_excel(path, sheet_name=sheet, dtype=str).fillna("")
-    df.columns = [c.strip().lower() for c in df.columns]
-    return df
-
-def read_ai_risks() -> pd.DataFrame:
-    return _read_xlsx(PREDEFINED_RISKS_XLSX, SHEET_PREDEFINED_RISKS)
-
-def read_ai_controls() -> pd.DataFrame:
-    return _read_xlsx(PREDEFINED_CONTROLS_XLSX, SHEET_PREDEFINED_CONTROLS)
-
-def read_cyber_risks() -> pd.DataFrame:
-    return _read_xlsx(STRIDE_RISKS_XLSX, SHEET_STRIDE_RISKS)
-
-def read_nist_controls() -> pd.DataFrame:
-    return _read_xlsx(NIST_CONTROLS_XLSX, SHEET_NIST_CONTROLS)
 
 def _mk_assessment_id(session_id: str) -> str:
     return f"RC-{session_id[:8].upper()}"

@@ -1,7 +1,6 @@
 version: '3.8'
 
 services:
-  # MongoDB Database
   mongodb:
     image: mongo:7.0
     container_name: governance-mongodb
@@ -14,23 +13,36 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
-      - ./DB_schema.sql:/docker-entrypoint-initdb.d/init.sql:ro
     networks:
       - governance-network
 
-  # Redis Cache Service (NEW)
   redis:
-    image: redis:6-alpine # Lightweight Redis image
+    image: redis:6-alpine
     container_name: governance-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
-      - redis_data:/data # Volume for persisting Redis data
+      - redis_data:/data
     networks:
       - governance-network
 
-  # Backend API
+  postgres:
+    image: postgres:15-alpine
+    container_name: governance-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-governance_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-governance_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-governance_risks}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./Agents/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    networks:
+      - governance-network
+
   backend:
     build: .
     container_name: governance-backend
@@ -39,14 +51,14 @@ services:
       - NODE_ENV=production
       - PORT=3001
       - MONGODB_URI=mongodb://${MONGO_USERNAME:-admin}:${MONGO_PASSWORD:-password123}@mongodb:27017/${MONGO_DATABASE:-governance_db}?retryWrites=true&w=majority&appName=Governance-AI&authSource=admin
-      # NEW: Environment variables for Redis
-      - REDIS_HOST=redis           # Uses the Redis service name as the host
-      - REDIS_PORT=6379            # Default Redis port
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     ports:
       - "3001:3001"
     depends_on:
       - mongodb
-      - redis # NEW: Ensure Redis starts before the backend attempts to connect
+      - redis
+      - postgres
     networks:
       - governance-network
     healthcheck:
@@ -59,7 +71,9 @@ services:
 volumes:
   mongodb_data:
     driver: local
-  redis_data: # NEW: Volume definition for Redis data persistence
+  redis_data:
+    driver: local
+  postgres_data:
     driver: local
 
 networks:

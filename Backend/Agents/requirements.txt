@@ -130,3 +130,4 @@ xxhash
 yarl
 zipp
 zstandard
+psycopg2-binary
