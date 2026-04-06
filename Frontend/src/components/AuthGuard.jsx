@@ -1,9 +1,7 @@
-import { useAuth } from '../contexts/AuthContext';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const AuthGuard = () => {
-  const { user } = useAuth();
-  return user ? <Outlet /> : <Navigate to="/login" replace />;
+  return <Outlet />;
 };
 
 export default AuthGuard;

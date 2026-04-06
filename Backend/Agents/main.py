@@ -1,10 +1,12 @@
 # main.py
 from __future__ import annotations
 import os
+from uuid import uuid4
 from pathlib import Path
 from typing import List, Optional, Dict, Any
 from fastapi import FastAPI, HTTPException, Body, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from starlette.requests import Request
 from pydantic import BaseModel
@@ -329,14 +331,21 @@ def cyber_controls(payload: ControlsIn):
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
-    print(f"--> {request.method} {request.url.path}")
+    request_id = request.headers.get("X-Request-ID") or str(uuid4())
+    request.state.request_id = request_id
+    print(f"--> [{request_id}] {request.method} {request.url.path}")
     try:
         response = await call_next(request)
-        print(f"<-- {request.method} {request.url.path} {response.status_code}")
+        response.headers["X-Request-ID"] = request_id
+        print(f"<-- [{request_id}] {request.method} {request.url.path} {response.status_code}")
         return response
     except Exception as e:
-        print(f"!! {request.method} {request.url.path} raised: {e}")
-        raise
+        print(f"!! [{request_id}] {request.method} {request.url.path} raised: {e}")
+        return JSONResponse(
+            status_code=500,
+            content={"detail": f"Internal server error. request_id={request_id}"},
+            headers={"X-Request-ID": request_id},
+        )
 
 def _safe_include(router_import_callable, prefix: str, name: str):
     try:
@@ -362,6 +371,9 @@ _safe_include(lambda: __import__("agents.risk_matrix_agent", fromlist=["router"]
 
 _safe_include(lambda: __import__("agents.report_agent", fromlist=["router"]).router,
               "/agent/assessment", "report_agent")
+
+_safe_include(lambda: __import__("agents.requirements_collection.router", fromlist=["router"]).router,
+              "/agent/requirements", "requirements_collection")
 
 def _mount_governance():
     for modname in ("goverance_agent", "goverance_agent_v1"):

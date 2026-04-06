@@ -22,6 +22,7 @@ import Reports from "./pages/Reports/main";
 import TrustCenterDocuments from "./pages/Trust Center/Documents";
 import TrustCenterInsight from "./pages/Trust Center/Insights";
 import Demo from "./pages/Demo/Demo";
+import SecurityRequirementsPage from "./pages/SecurityRequirementsPage";
 import RiskAssessment from "./pages/CyberSecurity Management/Risk Assessment/RiskAssessment";
 import RiskAnalysis from "./pages/CyberSecurity Management/RiskAnalysis";
 import ThirdPartyAssessment from "./pages/ThirdPartyAssessment/main";
@@ -38,7 +39,7 @@ import RateLimitSnackbar from "./components/rateLimitSnackbar";
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<Navigate to="/dashboard" replace />} />
       <Route path="/oauth/callback" element={<OAuthRedirectHandler />} />
 
       <Route element={<AuthGuard />}>
@@ -57,6 +58,7 @@ function AppRoutes() {
             element={<ProtectedRoute requiredRole="admin"><UserManagement /></ProtectedRoute>}
           />
           <Route path="chat" element={<ChatAgent />} />
+          <Route path="requirements" element={<SecurityRequirementsPage />} />
           <Route path="demo" element={<Demo />} />
           <Route path="ai-inventory" element={<AIInventory />} />
           <Route path="ai-inventory/:assetId" element={<AssetDetail />} />
