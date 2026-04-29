@@ -1,6 +1,4 @@
-// pages/SecurityRequirementsPage.jsx
-// Route: /requirements
-// Drop into your existing React frontend and add to your router
+
 
 import { useState, useRef, useCallback } from "react";
 
@@ -8,17 +6,17 @@ const AGENT_URL = import.meta.env.VITE_AGENT_URL || "http://localhost:8000";
 
 // ── Design tokens matching Rakfort dark theme ─────────────────────────────────
 const C = {
-  bg:        "#0f172a",
+  bg:        "#0b0f1a",
   surface:   "#111827",
-  surface2:  "#1f2937",
-  border:    "#233047",
-  borderHi:  "#334155",
-  accent:    "#2563eb",
-  accentHi:  "#bfdbfe",
-  accentBg:  "#1e3a5f",
-  text:      "#f8fafc",
-  textMid:   "#cbd5e1",
-  textDim:   "#94a3b8",
+  surface2:  "#1a2235",
+  border:    "#1e2d45",
+  borderHi:  "#2d4a6e",
+  accent:    "#3b82f6",
+  accentHi:  "#60a5fa",
+  accentBg:  "#1d3a5c",
+  text:      "#e2e8f0",
+  textMid:   "#94a3b8",
+  textDim:   "#475569",
   critical:  "#ef4444",
   high:      "#f97316",
   medium:    "#f59e0b",
@@ -95,7 +93,8 @@ function Btn({ children, onClick, disabled, variant = "primary", style: extraSty
   return <button onClick={onClick} disabled={disabled} style={{ ...base, ...variants[variant] }}>{children}</button>;
 }
 
-function RequirementCard({ req, onStatusChange, expanded, onToggle }) {
+function RequirementCard({ req, onStatusChange }) {
+  const [expanded, setExpanded] = useState(false);
   const pc = PRIORITY_COLORS[req.priority] || C.textMid;
 
   return (
@@ -106,21 +105,11 @@ function RequirementCard({ req, onStatusChange, expanded, onToggle }) {
       onMouseEnter={e => e.currentTarget.style.borderColor = C.borderHi}
       onMouseLeave={e => e.currentTarget.style.borderColor = C.border}
     >
-      <div style={{ padding: "14px 16px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10, minHeight: 64 }}
-        onClick={onToggle}>
+      <div style={{ padding: "12px 16px", cursor: "pointer", display: "flex", alignItems: "flex-start", gap: 10 }}
+        onClick={() => setExpanded(x => !x)}>
         <span style={{ fontSize: 16, marginTop: 1 }}>{CATEGORY_ICONS[req.category] || "📌"}</span>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{
-            fontSize: 13,
-            fontWeight: 600,
-            color: C.text,
-            lineHeight: 1.4,
-            marginBottom: 6,
-            display: "-webkit-box",
-            WebkitLineClamp: expanded ? "unset" : 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}>{req.title}</div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: C.text, lineHeight: 1.4, marginBottom: 5 }}>{req.title}</div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
             <Badge label={req.category} color={C.accentHi} bg={C.accentBg} />
             <Badge label={req.priority} color={pc} bg={pc + "22"} />
@@ -131,7 +120,7 @@ function RequirementCard({ req, onStatusChange, expanded, onToggle }) {
       </div>
 
       {expanded && (
-        <div style={{ padding: "0 16px 14px", borderTop: `1px solid ${C.border}`, maxHeight: 240, overflowY: "auto" }}>
+        <div style={{ padding: "0 16px 14px", borderTop: `1px solid ${C.border}` }}>
           <p style={{ fontSize: 13, color: C.textMid, lineHeight: 1.6, margin: "12px 0 8px" }}>{req.description}</p>
 
           {req.acceptance_criteria?.length > 0 && (
@@ -201,7 +190,6 @@ export default function SecurityRequirementsPage() {
   // Filter
   const [filterSource, setFilterSource]   = useState("all");
   const [filterPriority, setFilterPriority] = useState("all");
-  const [expandedRequirementId, setExpandedRequirementId] = useState(null);
 
   const addRequirements = useCallback(newReqs => {
     setRequirements(prev => {
@@ -412,7 +400,7 @@ export default function SecurityRequirementsPage() {
         </div>
       )}
 
-      <div style={{ padding: "24px 32px", display: "grid", gridTemplateColumns: "minmax(0, 1fr) 480px", gap: 24, maxWidth: 1460, alignItems: "start", minHeight: 0 }}>
+      <div style={{ padding: "24px 32px", display: "grid", gridTemplateColumns: "1fr 420px", gap: 24, maxWidth: 1400, alignItems: "start", minHeight: 0 }}>
 
         {/* Left: Input panel */}
         <div>
@@ -438,7 +426,7 @@ export default function SecurityRequirementsPage() {
               <div style={{ display: "flex", flexDirection: "column", height: 480 }}>
                 <div style={{ fontSize: 14, color: C.textMid, marginBottom: 16, display: "flex", alignItems: "center", gap: 8 }}>
                   <span style={{ width: 8, height: 8, borderRadius: "50%", background: C.success, display: "inline-block" }} />
-                  Security requirements chat
+                  Gemini-powered security requirements agent
                 </div>
                 <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 10, marginBottom: 16, paddingRight: 4 }}>
                   {chatHistory.length === 0 && (
@@ -573,10 +561,10 @@ export default function SecurityRequirementsPage() {
         </div>
 
         {/* Right: Requirements panel */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 0, background: C.surface, borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden", height: "calc(100vh - 160px)", minHeight: 0, boxShadow: "0 10px 30px rgba(0,0,0,0.18)" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 0, background: C.surface, borderRadius: 12, border: `1px solid ${C.border}`, overflow: "hidden", height: "calc(100vh - 160px)", minHeight: 0 }}>
 
           {/* Panel header */}
-          <div style={{ padding: "16px 18px", borderBottom: `1px solid ${C.border}`, flexShrink: 0, background: C.surface, position: "sticky", top: 0, zIndex: 1 }}>
+          <div style={{ padding: "16px 18px", borderBottom: `1px solid ${C.border}`, flexShrink: 0 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
               <h3 style={{ margin: 0, fontSize: 14, fontWeight: 600, color: C.text }}>
                 Collected Requirements
@@ -609,7 +597,7 @@ export default function SecurityRequirementsPage() {
           </div>
 
           {/* Requirements list */}
-          <div style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: "16px 12px 20px", display: "flex", flexDirection: "column", gap: 10, scrollbarGutter: "stable" }}>
+          <div style={{ flex: 1, minHeight: 0, overflowY: "auto", padding: 12, display: "flex", flexDirection: "column", gap: 8 }}>
             {filtered.length === 0 ? (
               <div style={{ color: C.textDim, textAlign: "center", marginTop: 60, fontSize: 13, lineHeight: 1.8 }}>
                 <div style={{ fontSize: 32, marginBottom: 10 }}>📋</div>
@@ -618,13 +606,7 @@ export default function SecurityRequirementsPage() {
               </div>
             ) : (
               filtered.map(req => (
-                <RequirementCard
-                  key={req.id}
-                  req={req}
-                  onStatusChange={handleStatusChange}
-                  expanded={expandedRequirementId === req.id}
-                  onToggle={() => setExpandedRequirementId(prev => prev === req.id ? null : req.id)}
-                />
+                <RequirementCard key={req.id} req={req} onStatusChange={handleStatusChange} />
               ))
             )}
           </div>

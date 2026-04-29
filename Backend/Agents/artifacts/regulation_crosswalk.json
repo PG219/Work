@@ -1,0 +1,505 @@
+{
+  "frameworks": [
+    "EU",
+    "NIST",
+    "ISO"
+  ],
+  "matrix": [
+    {
+      "item_type": "controls",
+      "item_id": "human_oversight_design",
+      "label": "HITL/HOTL design with documented override/escalation",
+      "EU": "Art. 14",
+      "NIST": "Gov-4.2",
+      "ISO": "Cl. 9.3"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "incident_response",
+      "label": "AI incident management (detection, triage, comms, postmortems)",
+      "EU": "Art. 62",
+      "NIST": "Mng-5",
+      "ISO": "Cl. 10.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_bias_drift",
+      "label": "Monitoring for bias/drift/robustness with thresholds & alerts",
+      "EU": "Art. 15",
+      "NIST": "Msr-2.4",
+      "ISO": "Cl. 9.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "third_party_validation",
+      "label": "External audit or conformity assessment completed",
+      "EU": "Art. 17",
+      "NIST": "Gov-5.3",
+      "ISO": "Cl. 9.2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "policy_aimgov",
+      "label": "Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",
+      "EU": "Art. 4",
+      "NIST": "Gov-1.1",
+      "ISO": "Cl. 5.2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "risk_register",
+      "label": "Central AI risk register with owners, mitigations, review cadence",
+      "EU": "Art. 9",
+      "NIST": "Map-1",
+      "ISO": "Cl. 6.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "dpia_pia",
+      "label": "DPIA/PIA conducted and updated for AI data processing",
+      "EU": "Art. 35",
+      "NIST": "Map-2",
+      "ISO": "Cl. 6.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "model_docs",
+      "label": "Model cards/data sheets, versioning, lineage, decision logs",
+      "EU": "Art. 11",
+      "NIST": "Gov-2",
+      "ISO": "Cl. 7.5"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "security_mlsdlc",
+      "label": "Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks",
+      "EU": "Art. 15",
+      "NIST": "Manage-1",
+      "ISO": "Cl. 8.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_metrics",
+      "label": "Monitoring metrics and dashboards for AI control performance",
+      "EU": "Art. 15",
+      "NIST": "Msr-2",
+      "ISO": "Cl. 9.1.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "risk_classification",
+      "label": "Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",
+      "EU": "Art. 6",
+      "NIST": "Map-1",
+      "ISO": "Cl. 8.2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "docs_traceability",
+      "label": "What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",
+      "EU": "Art. 11",
+      "NIST": "Gov-2",
+      "ISO": "Cl. 7.5"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "independent_validation",
+      "label": "Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?",
+      "EU": "Art. 17",
+      "NIST": "Gov-5",
+      "ISO": "Cl. 9.2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "monitoring_metrics",
+      "label": "What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",
+      "EU": "Art. 15",
+      "NIST": "Msr-2",
+      "ISO": "Cl. 9.1.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "human_oversight",
+      "label": "How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",
+      "EU": "Art. 14",
+      "NIST": "Gov-4.2",
+      "ISO": "Cl. 9.3"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "audit_trails",
+      "label": "Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?",
+      "EU": "Art. 11",
+      "NIST": "Gov-2",
+      "ISO": "Cl. 7.5"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "leadership",
+      "label": "How is top management involved in supporting, directing, and overseeing AI policies and risk controls?",
+      "EU": "",
+      "NIST": "",
+      "ISO": "Cl. 5.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "gov_policies",
+      "label": "Is there a written AI governance policy and an AIMS aligned to ISO/IEC 42001?",
+      "EU": "",
+      "NIST": "",
+      "ISO": "Cl. 5.2"
+    }
+  ],
+  "rows": [
+    {
+      "item_type": "controls",
+      "item_id": "human_oversight_design",
+      "label": "HITL/HOTL design with documented override/escalation",
+      "framework": "EU",
+      "reference": "Art. 14"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "human_oversight_design",
+      "label": "HITL/HOTL design with documented override/escalation",
+      "framework": "NIST",
+      "reference": "Gov-4.2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "human_oversight_design",
+      "label": "HITL/HOTL design with documented override/escalation",
+      "framework": "ISO",
+      "reference": "Cl. 9.3"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "incident_response",
+      "label": "AI incident management (detection, triage, comms, postmortems)",
+      "framework": "EU",
+      "reference": "Art. 62"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "incident_response",
+      "label": "AI incident management (detection, triage, comms, postmortems)",
+      "framework": "NIST",
+      "reference": "Mng-5"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "incident_response",
+      "label": "AI incident management (detection, triage, comms, postmortems)",
+      "framework": "ISO",
+      "reference": "Cl. 10.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_bias_drift",
+      "label": "Monitoring for bias/drift/robustness with thresholds & alerts",
+      "framework": "EU",
+      "reference": "Art. 15"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_bias_drift",
+      "label": "Monitoring for bias/drift/robustness with thresholds & alerts",
+      "framework": "NIST",
+      "reference": "Msr-2.4"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_bias_drift",
+      "label": "Monitoring for bias/drift/robustness with thresholds & alerts",
+      "framework": "ISO",
+      "reference": "Cl. 9.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "third_party_validation",
+      "label": "External audit or conformity assessment completed",
+      "framework": "EU",
+      "reference": "Art. 17"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "third_party_validation",
+      "label": "External audit or conformity assessment completed",
+      "framework": "NIST",
+      "reference": "Gov-5.3"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "third_party_validation",
+      "label": "External audit or conformity assessment completed",
+      "framework": "ISO",
+      "reference": "Cl. 9.2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "policy_aimgov",
+      "label": "Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",
+      "framework": "EU",
+      "reference": "Art. 4"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "policy_aimgov",
+      "label": "Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",
+      "framework": "NIST",
+      "reference": "Gov-1.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "policy_aimgov",
+      "label": "Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",
+      "framework": "ISO",
+      "reference": "Cl. 5.2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "risk_register",
+      "label": "Central AI risk register with owners, mitigations, review cadence",
+      "framework": "EU",
+      "reference": "Art. 9"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "risk_register",
+      "label": "Central AI risk register with owners, mitigations, review cadence",
+      "framework": "NIST",
+      "reference": "Map-1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "risk_register",
+      "label": "Central AI risk register with owners, mitigations, review cadence",
+      "framework": "ISO",
+      "reference": "Cl. 6.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "dpia_pia",
+      "label": "DPIA/PIA conducted and updated for AI data processing",
+      "framework": "EU",
+      "reference": "Art. 35"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "dpia_pia",
+      "label": "DPIA/PIA conducted and updated for AI data processing",
+      "framework": "NIST",
+      "reference": "Map-2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "dpia_pia",
+      "label": "DPIA/PIA conducted and updated for AI data processing",
+      "framework": "ISO",
+      "reference": "Cl. 6.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "model_docs",
+      "label": "Model cards/data sheets, versioning, lineage, decision logs",
+      "framework": "EU",
+      "reference": "Art. 11"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "model_docs",
+      "label": "Model cards/data sheets, versioning, lineage, decision logs",
+      "framework": "NIST",
+      "reference": "Gov-2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "model_docs",
+      "label": "Model cards/data sheets, versioning, lineage, decision logs",
+      "framework": "ISO",
+      "reference": "Cl. 7.5"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "security_mlsdlc",
+      "label": "Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks",
+      "framework": "EU",
+      "reference": "Art. 15"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "security_mlsdlc",
+      "label": "Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks",
+      "framework": "NIST",
+      "reference": "Manage-1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "security_mlsdlc",
+      "label": "Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks",
+      "framework": "ISO",
+      "reference": "Cl. 8.1"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_metrics",
+      "label": "Monitoring metrics and dashboards for AI control performance",
+      "framework": "EU",
+      "reference": "Art. 15"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_metrics",
+      "label": "Monitoring metrics and dashboards for AI control performance",
+      "framework": "NIST",
+      "reference": "Msr-2"
+    },
+    {
+      "item_type": "controls",
+      "item_id": "monitoring_metrics",
+      "label": "Monitoring metrics and dashboards for AI control performance",
+      "framework": "ISO",
+      "reference": "Cl. 9.1.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "risk_classification",
+      "label": "Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",
+      "framework": "EU",
+      "reference": "Art. 6"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "risk_classification",
+      "label": "Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",
+      "framework": "NIST",
+      "reference": "Map-1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "risk_classification",
+      "label": "Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",
+      "framework": "ISO",
+      "reference": "Cl. 8.2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "docs_traceability",
+      "label": "What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",
+      "framework": "EU",
+      "reference": "Art. 11"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "docs_traceability",
+      "label": "What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",
+      "framework": "NIST",
+      "reference": "Gov-2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "docs_traceability",
+      "label": "What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",
+      "framework": "ISO",
+      "reference": "Cl. 7.5"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "independent_validation",
+      "label": "Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?",
+      "framework": "EU",
+      "reference": "Art. 17"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "independent_validation",
+      "label": "Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?",
+      "framework": "NIST",
+      "reference": "Gov-5"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "independent_validation",
+      "label": "Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?",
+      "framework": "ISO",
+      "reference": "Cl. 9.2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "monitoring_metrics",
+      "label": "What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",
+      "framework": "EU",
+      "reference": "Art. 15"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "monitoring_metrics",
+      "label": "What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",
+      "framework": "NIST",
+      "reference": "Msr-2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "monitoring_metrics",
+      "label": "What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",
+      "framework": "ISO",
+      "reference": "Cl. 9.1.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "human_oversight",
+      "label": "How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",
+      "framework": "EU",
+      "reference": "Art. 14"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "human_oversight",
+      "label": "How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",
+      "framework": "NIST",
+      "reference": "Gov-4.2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "human_oversight",
+      "label": "How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",
+      "framework": "ISO",
+      "reference": "Cl. 9.3"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "audit_trails",
+      "label": "Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?",
+      "framework": "EU",
+      "reference": "Art. 11"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "audit_trails",
+      "label": "Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?",
+      "framework": "NIST",
+      "reference": "Gov-2"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "audit_trails",
+      "label": "Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?",
+      "framework": "ISO",
+      "reference": "Cl. 7.5"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "leadership",
+      "label": "How is top management involved in supporting, directing, and overseeing AI policies and risk controls?",
+      "framework": "ISO",
+      "reference": "Cl. 5.1"
+    },
+    {
+      "item_type": "questions",
+      "item_id": "gov_policies",
+      "label": "Is there a written AI governance policy and an AIMS aligned to ISO/IEC 42001?",
+      "framework": "ISO",
+      "reference": "Cl. 5.2"
+    }
+  ]
+}

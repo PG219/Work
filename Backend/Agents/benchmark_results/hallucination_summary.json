@@ -1,0 +1,11 @@
+{
+  "cases": 20,
+  "runs_per_case": 5,
+  "total_runs": 100,
+  "total_risk_ids": 845,
+  "total_control_codes": 3850,
+  "risk_id_deviations": 0,
+  "fabricated_control_codes": 0,
+  "risk_id_deviation_rate": 0.0,
+  "control_fabrication_rate": 0.0
+}

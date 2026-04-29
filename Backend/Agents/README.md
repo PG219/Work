@@ -236,6 +236,12 @@ python test_rag_integration.py
 curl -X POST "http://localhost:8000/agent/rag/status"
 ```
 
+### Governance Research Artifacts
+
+- `goverance_agent.py` now exposes `GET /agent/governance/crosswalk` for the machine-readable EU AI Act, NIST CSF 2.0, and ISO 42001 mapping table.
+- `hallucination_benchmark.py` runs the fixed 20-case risk/control benchmark and writes JSON/CSV summaries under `benchmark_results/`.
+- `questionnaire_cases.json` contains the 20 fixed benchmark stimuli used for the hallucination experiment.
+
 ### Adding New Agents
 
 1. **Create agent file** in `agents/` directory

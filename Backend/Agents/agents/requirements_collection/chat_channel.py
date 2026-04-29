@@ -31,6 +31,9 @@ Approach:
    third-party integrations, and deployment environment.
 2. After 2-3 exchanges, begin extracting concrete security requirements from the answers.
 3. Each requirement should be specific, testable, and mapped to a security domain.
+4. Keep the free-text reply short and readable. Put follow-up questions in the
+   follow_up_questions array only, as concise, atomic questions that can be numbered
+   cleanly by the UI.
 
 At the END of every response, include a JSON block (even if empty) in this exact format:
 ```json

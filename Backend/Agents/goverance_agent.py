@@ -66,25 +66,12 @@ except Exception as e:
 
 from google.oauth2 import service_account
 
-FRAMEWORKS = ["EU", "NIST", "ISO"]
-
-# --- Regulation Mapping (unchanged) ---
-REGULATION_MAPPING = {
-    "controls": {
-        "human_oversight_design": {"EU": "Art. 14", "NIST": "Gov-4.2", "ISO": "Cl. 9.3"},
-        "incident_response": {"EU": "Art. 62", "NIST": "Mng-5", "ISO": "Cl. 10.1"},
-        "monitoring_bias_drift": {"EU": "Art. 15", "NIST": "Msr-2.4", "ISO": "Cl. 9.1"},
-        "third_party_validation": {"EU": "Art. 17", "NIST": "Gov-5.3", "ISO": "Cl. 9.2"},
-    },
-    "questions": {
-        "risk_classification": {"EU": "Art. 6", "NIST": "Map-1", "ISO": "Cl. 8.2"},
-        "docs_traceability": {"EU": "Art. 11", "NIST": "Gov-2", "ISO": "Cl. 7.5"},
-        "independent_validation": {"EU": "Art. 17", "NIST": "Gov-5", "ISO": "Cl. 9.2"},
-        "monitoring_metrics": {"EU": "Art. 15", "NIST": "Msr-2", "ISO": "Cl. 9.1.1"},
-        "leadership": {"ISO": "Cl. 5.1"},
-        "gov_policies": {"ISO": "Cl. 5.2"},
-    }
-}
+from regulation_crosswalk import (
+    FRAMEWORKS,
+    build_crosswalk_matrix,
+    get_control_refs,
+    get_question_refs,
+)
 
 # --- Data classes (unchanged) ---
 @dataclass
@@ -116,6 +103,15 @@ class AssessmentResponse(BaseModel):
     recommendations: List[str]
     detailed_analysis: Dict[str, Dict[str, List[str]]]
     full_report: Dict[str, Any]
+
+
+class CrosswalkRow(BaseModel):
+    item_type: str
+    item_id: str
+    label: str
+    EU: str = ""
+    NIST: str = ""
+    ISO: str = ""
 
 # --- LangGraph State (unchanged) ---
 class AssessmentState(TypedDict):
@@ -305,7 +301,10 @@ def generate_detailed_analysis(
 ) -> Dict[str, Dict[str, List[str]]]:
     analysis = {fw: {"contributing": [], "missing": []} for fw in FRAMEWORKS}
     def get_ref_string(item_type: str, item_id: str, framework: str) -> str:
-        ref = REGULATION_MAPPING.get(item_type, {}).get(item_id, {}).get(framework)
+        if item_type == "questions":
+            ref = get_question_refs(item_id, framework)
+        else:
+            ref = get_control_refs(item_id, framework)
         return f" (Ref: {framework} {ref})" if ref else ""
     for qid, score in per_question_scores.items():
         if score >= 2:
@@ -340,6 +339,12 @@ def generate_detailed_analysis(
 
 # --- FastAPI App Setup ---
 app = FastAPI(title="AI Governance Assessor API", version="1.0.0")
+
+
+@app.get("/crosswalk", response_model=List[CrosswalkRow])
+def get_regulation_crosswalk():
+    """Return the machine-readable questionnaire/control crosswalk used by the governance scorer."""
+    return build_crosswalk_matrix()
 
 # --- Build the LangGraph App ---
 workflow = StateGraph(AssessmentState)

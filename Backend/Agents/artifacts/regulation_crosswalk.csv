@@ -1,0 +1,51 @@
+item_type,item_id,label,framework,reference
+controls,human_oversight_design,HITL/HOTL design with documented override/escalation,EU,Art. 14
+controls,human_oversight_design,HITL/HOTL design with documented override/escalation,NIST,Gov-4.2
+controls,human_oversight_design,HITL/HOTL design with documented override/escalation,ISO,Cl. 9.3
+controls,incident_response,"AI incident management (detection, triage, comms, postmortems)",EU,Art. 62
+controls,incident_response,"AI incident management (detection, triage, comms, postmortems)",NIST,Mng-5
+controls,incident_response,"AI incident management (detection, triage, comms, postmortems)",ISO,Cl. 10.1
+controls,monitoring_bias_drift,Monitoring for bias/drift/robustness with thresholds & alerts,EU,Art. 15
+controls,monitoring_bias_drift,Monitoring for bias/drift/robustness with thresholds & alerts,NIST,Msr-2.4
+controls,monitoring_bias_drift,Monitoring for bias/drift/robustness with thresholds & alerts,ISO,Cl. 9.1
+controls,third_party_validation,External audit or conformity assessment completed,EU,Art. 17
+controls,third_party_validation,External audit or conformity assessment completed,NIST,Gov-5.3
+controls,third_party_validation,External audit or conformity assessment completed,ISO,Cl. 9.2
+controls,policy_aimgov,"Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",EU,Art. 4
+controls,policy_aimgov,"Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",NIST,Gov-1.1
+controls,policy_aimgov,"Written AI policy + AIMS aligned to ISO 42001 (approved, reviewed annually)",ISO,Cl. 5.2
+controls,risk_register,"Central AI risk register with owners, mitigations, review cadence",EU,Art. 9
+controls,risk_register,"Central AI risk register with owners, mitigations, review cadence",NIST,Map-1
+controls,risk_register,"Central AI risk register with owners, mitigations, review cadence",ISO,Cl. 6.1
+controls,dpia_pia,DPIA/PIA conducted and updated for AI data processing,EU,Art. 35
+controls,dpia_pia,DPIA/PIA conducted and updated for AI data processing,NIST,Map-2
+controls,dpia_pia,DPIA/PIA conducted and updated for AI data processing,ISO,Cl. 6.1
+controls,model_docs,"Model cards/data sheets, versioning, lineage, decision logs",EU,Art. 11
+controls,model_docs,"Model cards/data sheets, versioning, lineage, decision logs",NIST,Gov-2
+controls,model_docs,"Model cards/data sheets, versioning, lineage, decision logs",ISO,Cl. 7.5
+controls,security_mlsdlc,Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks,EU,Art. 15
+controls,security_mlsdlc,Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks,NIST,Manage-1
+controls,security_mlsdlc,Secure MLOps/ML-SDLC incl. adversarial testing & supply-chain checks,ISO,Cl. 8.1
+controls,monitoring_metrics,Monitoring metrics and dashboards for AI control performance,EU,Art. 15
+controls,monitoring_metrics,Monitoring metrics and dashboards for AI control performance,NIST,Msr-2
+controls,monitoring_metrics,Monitoring metrics and dashboards for AI control performance,ISO,Cl. 9.1.1
+questions,risk_classification,"Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",EU,Art. 6
+questions,risk_classification,"Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",NIST,Map-1
+questions,risk_classification,"Has the AI use-case been classified by risk level according to the EU AI Act and mapped for potential harms (legal, ethical, safety, privacy, security)?",ISO,Cl. 8.2
+questions,docs_traceability,"What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",EU,Art. 11
+questions,docs_traceability,"What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",NIST,Gov-2
+questions,docs_traceability,"What documentation exists: versioning, training data provenance, model governance, decision logs, incident records, and conformity assessments?",ISO,Cl. 7.5
+questions,independent_validation,Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?,EU,Art. 17
+questions,independent_validation,Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?,NIST,Gov-5
+questions,independent_validation,Have conformity assessments or external/third-party audits been conducted to validate controls and compliance?,ISO,Cl. 9.2
+questions,monitoring_metrics,"What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",EU,Art. 15
+questions,monitoring_metrics,"What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",NIST,Msr-2
+questions,monitoring_metrics,"What metrics and benchmarks are used to monitor accuracy, fairness, robustness, security, and ethical compliance?",ISO,Cl. 9.1.1
+questions,human_oversight,"How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",EU,Art. 14
+questions,human_oversight,"How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",NIST,Gov-4.2
+questions,human_oversight,"How is human oversight and intervention designed into the AI system, particularly for high-risk applications?",ISO,Cl. 9.3
+questions,audit_trails,Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?,EU,Art. 11
+questions,audit_trails,Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?,NIST,Gov-2
+questions,audit_trails,Are processes in place for audit trails and record keeping to support regulatory reviews and internal accountability?,ISO,Cl. 7.5
+questions,leadership,"How is top management involved in supporting, directing, and overseeing AI policies and risk controls?",ISO,Cl. 5.1
+questions,gov_policies,Is there a written AI governance policy and an AIMS aligned to ISO/IEC 42001?,ISO,Cl. 5.2

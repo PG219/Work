@@ -1,0 +1,103 @@
+[
+  {
+    "id": "AI-01",
+    "family": "ai",
+    "summary": "A customer-facing medical triage model uses patient notes and drafts recommendations with no human review."
+  },
+  {
+    "id": "AI-02",
+    "family": "ai",
+    "summary": "A recruiting system screens CVs and ranks candidates using third-party cloud inference and stores personal data."
+  },
+  {
+    "id": "AI-03",
+    "family": "ai",
+    "summary": "A bank underwriting model is retrained monthly, but there are no documented model cards, lineage records, or decision logs."
+  },
+  {
+    "id": "AI-04",
+    "family": "ai",
+    "summary": "A content moderation classifier is deployed across EU markets and can flag users automatically without an appeal path."
+  },
+  {
+    "id": "AI-05",
+    "family": "ai",
+    "summary": "A foundation model is exposed through an API without rate limiting, access control, or adversarial testing."
+  },
+  {
+    "id": "AI-06",
+    "family": "ai",
+    "summary": "A sales copilot uses internal documents through retrieval augmented generation and logs prompts but has no drift monitoring."
+  },
+  {
+    "id": "AI-07",
+    "family": "ai",
+    "summary": "An insurance claims model relies on external vendor data and no DPIA has been performed."
+  },
+  {
+    "id": "AI-08",
+    "family": "ai",
+    "summary": "A university admissions assistant provides recommendations and humans can override it, but escalation paths are unclear."
+  },
+  {
+    "id": "AI-09",
+    "family": "ai",
+    "summary": "A biometric verification system is planned for public-facing use in EU operations."
+  },
+  {
+    "id": "AI-10",
+    "family": "ai",
+    "summary": "An internal compliance assistant generates policy suggestions and stores full prompt and response traces."
+  },
+  {
+    "id": "CY-01",
+    "family": "cyber",
+    "summary": "An internet-facing portal is exposed to credential stuffing and lacks MFA, rate limiting, and audit logging."
+  },
+  {
+    "id": "CY-02",
+    "family": "cyber",
+    "summary": "A supply-chain attack could inject malicious packages into the deployment pipeline."
+  },
+  {
+    "id": "CY-03",
+    "family": "cyber",
+    "summary": "A data lake stores sensitive records without encryption or access segregation."
+  },
+  {
+    "id": "CY-04",
+    "family": "cyber",
+    "summary": "A phishing campaign targets admins through email and mobile push notification workflows."
+  },
+  {
+    "id": "CY-05",
+    "family": "cyber",
+    "summary": "A ransomware scenario affects backup restoration, incident response, and recovery drills."
+  },
+  {
+    "id": "CY-06",
+    "family": "cyber",
+    "summary": "A cloud API lacks input validation and is vulnerable to injection and abusive request volume."
+  },
+  {
+    "id": "CY-07",
+    "family": "cyber",
+    "summary": "A production container image is pulled from an unsigned registry and has no scanning."
+  },
+  {
+    "id": "CY-08",
+    "family": "cyber",
+    "summary": "A secrets vault rotation process is missing and credentials are reused across services."
+  },
+  {
+    "id": "CY-09",
+    "family": "cyber",
+    "summary": "A logging pipeline does not preserve forensic evidence after an incident."
+  },
+  {
+    "id": "CY-10",
+    "family": "cyber",
+    "summary": "A remote access channel allows third-party vendors to connect without strong authentication."
+  }
+]
+
